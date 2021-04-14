@@ -140,14 +140,14 @@ def do_learn():
     
     my_checkpoint = callbacks.ModelCheckpoint("check_0407.h5", # 저장 파일 이름 
                                               save_weights_only=False,
-                                              monitor = "val_accuracy",
+                                              monitor = "val_acc",
                                               mode = "max", # 저장 타이밍?
                                               save_best_only=True, # 최고점만 저장할거냐
                                               )
     
     
     log = model.fit(x_train, y_train,
-                    epochs=3, batch_size=64,
+                    epochs=20, batch_size=64,
                     validation_split=0.2, # 6만개중 0.2
                     callbacks=[mystop,my_checkpoint] # validation_loss 관찰 - 이상 발생 후 10epochs까지 관찰
                     )
